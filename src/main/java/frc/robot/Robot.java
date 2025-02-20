@@ -13,6 +13,7 @@ import com.ctre.phoenix6.controls.NeutralOut;
 import com.ctre.phoenix6.controls.PositionTorqueCurrentFOC;
 import com.ctre.phoenix6.controls.PositionVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
+import com.ctre.phoenix6.signals.NeutralModeValue;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
@@ -60,6 +61,7 @@ public class Robot extends TimedRobot {
     // Peak output of 120 A
     masterConfigs.TorqueCurrent.withPeakForwardTorqueCurrent(Amps.of(120))
       .withPeakReverseTorqueCurrent(Amps.of(-120));
+      masterConfigs.MotorOutput.NeutralMode = NeutralModeValue.Brake;
 
     /* Retry config apply up to 5 times, report if failure */
     StatusCode status = StatusCode.StatusCodeNotInitialized;
